@@ -1,32 +1,42 @@
-// src/features/user/model/userSlice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserState {
-  email: string;
-  password: string;
+    email: string;
+    password: string;
+    name: string;
+    surname: string;
 }
 
 const initialState: UserState = {
-  email: '',
-  password: '',
+    email: "",
+    password: "",
+    name: "",
+    surname: "",
 };
 
 const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload;
+    name: "user",
+    initialState,
+    reducers: {
+        setEmail(state, action: PayloadAction<string>) {
+            state.email = action.payload;
+        },
+        setPassword(state, action: PayloadAction<string>) {
+            state.password = action.payload;
+        },
+        setName(state, action: PayloadAction<string>) {
+            state.name = action.payload;
+        },
+        setSurname(state, action: PayloadAction<string>) {
+            state.surname = action.payload;
+        },
+        clearUser(state) {
+            state.email = "";
+            state.password = "";
+            state.name = "";
+        },
     },
-    setPassword: (state, action: PayloadAction<string>) => {
-      state.password = action.payload;
-    },
-    clearUser: (state) => {
-      state.email = '';
-      state.password = '';
-    },
-  },
 });
 
-export const { setEmail, setPassword, clearUser } = userSlice.actions;
+export const { setEmail, setPassword, setName, setSurname, clearUser } = userSlice.actions;
 export default userSlice.reducer;

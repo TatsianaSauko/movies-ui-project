@@ -1,12 +1,12 @@
-import React from 'react';
+import MovieList from "../../features/ui/MovieList";
+import React from "react";
 
 const Home: React.FC = () => {
-  return (
-    <div>
-      <h2>Главная страница</h2>
-      <p>Добро пожаловать на главную страницу!</p>
-    </div>
-  );
+    return (
+        <div>
+            <MovieList />
+        </div>
+    );
 };
 
 export default Home;
