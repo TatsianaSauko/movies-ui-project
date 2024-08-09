@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState, AppDispatch } from "../../app/store";
 import { fetchMovies } from "../movie/api/fetchMovies";
-import MovieCard from "./MovieCard";
-import styles from "./MovieList.module.scss";
+import MovieDisplay from "./MovieDisplay";
 import { Movie } from "../movie/model/movieTypes";
-import { Skeleton, Stack } from "@chakra-ui/react";
-import RandomMovie from "./RandomMovie";
+import { Box } from "@chakra-ui/react";
 import { setSelectedMovie } from "../movie/model/movieSlice";
+import LoadingSkeleton from "../../shared/LoadingSkeleton";
 
 const MovieList: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -16,6 +15,7 @@ const MovieList: React.FC = () => {
     const movies = useSelector((state: RootState) => state.movies.movies);
     const status = useSelector((state: RootState) => state.movies.status);
     const error = useSelector((state: RootState) => state.movies.error);
+    const [sliderValue, setSliderValue] = useState(10);
 
     useEffect(() => {
         if (status === "idle") {
@@ -29,35 +29,20 @@ const MovieList: React.FC = () => {
     };
 
     if (status === "loading") {
-        return (
-            <Stack>
-                <Skeleton height="20px" />
-                <Skeleton height="20px" />
-                <Skeleton height="20px" />
-            </Stack>
-        );
+        return <LoadingSkeleton />;
     }
 
     if (status === "failed") {
-        return <div>Error: {error}</div>;
+        return <Box>Error: {error}</Box>;
     }
 
     return (
-        <div>
-            <RandomMovie />
-            <div className={styles["movie-list"]}>
-                {movies &&
-                    movies
-                        .slice(0, 10)
-                        .map((movie) => (
-                            <MovieCard
-                                key={movie.id}
-                                movie={movie}
-                                onClick={() => handleMovieClick(movie)}
-                            />
-                        ))}
-            </div>
-        </div>
+        <MovieDisplay
+            movies={movies}
+            sliderValue={sliderValue}
+            setSliderValue={setSliderValue}
+            handleMovieClick={handleMovieClick}
+        />
     );
 };
 

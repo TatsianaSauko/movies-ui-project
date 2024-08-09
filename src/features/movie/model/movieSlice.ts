@@ -1,23 +1,31 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchMovies, fetchRandomMovie, fetchMoviesTop } from "../api/fetchMovies";
+import { fetchMovies, fetchRandomMovie, fetchMoviesTop, fetchQuery } from "../api/fetchMovies";
 import { Movie } from "./movieTypes";
 
 interface MovieState {
     movies: Movie[];
+    movieCount: number;
+    popular: Movie[];
+    search: Movie[];
     status: "idle" | "loading" | "succeeded" | "failed";
     error: string | null;
     randomMovie: Movie | null;
     selectedMovie: Movie | null;
     randomMovieStatus: "idle" | "loading" | "succeeded" | "failed";
+    popularStatus: "idle" | "loading" | "succeeded" | "failed";
 }
 
 const initialState: MovieState = {
     movies: [],
+    movieCount: 0,
+    popular: [],
+    search: [],
     status: "idle",
     error: null,
     randomMovie: null,
     selectedMovie: null,
     randomMovieStatus: "idle",
+    popularStatus: "idle",
 };
 
 const movieSlice = createSlice({
@@ -26,6 +34,12 @@ const movieSlice = createSlice({
     reducers: {
         setSelectedMovie: (state, action: PayloadAction<Movie>) => {
             state.selectedMovie = action.payload;
+        },
+        setMovies: (state, action: PayloadAction<Movie[]>) => {
+            state.movies = action.payload;
+        },
+        setSearch: (state, action: PayloadAction<Movie[]>) => {
+            state.search = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -36,6 +50,7 @@ const movieSlice = createSlice({
             .addCase(fetchMovies.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.movies = action.payload;
+                state.movieCount = action.payload;
             })
             .addCase(fetchMovies.rejected, (state, action) => {
                 state.status = "failed";
@@ -53,18 +68,18 @@ const movieSlice = createSlice({
                 state.error = action.error.message || "Something went wrong";
             })
             .addCase(fetchMoviesTop.pending, (state) => {
-                state.status = "loading";
+                state.popularStatus = "loading";
             })
             .addCase(fetchMoviesTop.fulfilled, (state, action) => {
-                state.status = "succeeded";
-                state.movies = action.payload;
+                state.popularStatus = "succeeded";
+                state.popular = action.payload;
             })
             .addCase(fetchMoviesTop.rejected, (state, action) => {
-                state.status = "failed";
+                state.popularStatus = "failed";
                 state.error = action.error.message || "Something went wrong";
             });
     },
 });
 
-export const { setSelectedMovie } = movieSlice.actions;
+export const { setSelectedMovie, setMovies, setSearch } = movieSlice.actions;
 export default movieSlice.reducer;

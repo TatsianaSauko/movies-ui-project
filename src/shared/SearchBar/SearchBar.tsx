@@ -1,31 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
-import { fetchSuggestions } from "../../features/movie/api/fetchMovies";
-import styles from "./SearchBar.module.scss";
-import { Movie } from "@/features/movie/model/movieTypes";
+import React, { useState } from "react";
+import { fetchQuery } from "../../features/movie/api/fetchMovies";
+import { useDispatch } from "react-redux";
+import { setMovies, setSearch } from "../../features/movie/model/movieSlice";
+import { Input, Box } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { RootState } from "@/app/store";
-import { useSelector } from "react-redux";
 
 const SearchBar: React.FC = () => {
-    const [query, setQuery] = useState("");
-    const [movies, setMovies] = useState<Movie[]>([]);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const name = useSelector((state: RootState) => state.user.name);
+    const [query, setQuery] = useState("");
 
     const fetchData = async () => {
-        if (!name) {
-            navigate("/login");
-            setQuery("");
-            return;
-        }
-
         if (query.length > 2) {
             try {
-                const data = await fetchSuggestions({ count: 5, value: query });
-                setMovies(Array.isArray(data) ? data : []);
+                const data = await fetchQuery({ value: query });
+                dispatch(setSearch(Array.isArray(data) ? data : []));
+                setQuery("");
+                navigate(`/search`);
             } catch (error) {
-                setMovies([]);
+                dispatch(setMovies([]));
             }
         }
     };
@@ -37,30 +30,20 @@ const SearchBar: React.FC = () => {
     };
 
     return (
-        <div className={styles.searchBar}>
-            <input
+        <Box>
+            <Input
                 type="text"
                 placeholder="Search movies..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                className={styles.search}
+                color="white"
+                bg="gray.600"
+                border="none"
+                _placeholder={{ color: "gray.400" }}
+                _focus={{ boxShadow: "none" }}
             />
-            {movies.length > 0 && (
-                <Menu>
-                    <MenuButton as={Button} className={styles.menuButton}>
-                        Results
-                    </MenuButton>
-                    <MenuList>
-                        {movies.map((movie) => (
-                            <MenuItem key={movie.id} className={styles.movie}>
-                                {movie.title}
-                            </MenuItem>
-                        ))}
-                    </MenuList>
-                </Menu>
-            )}
-        </div>
+        </Box>
     );
 };
 

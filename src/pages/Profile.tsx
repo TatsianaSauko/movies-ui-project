@@ -1,10 +1,9 @@
-// Profile.tsx
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../app/store";
-import { clearUser } from "../../features/user/model/userSlice";
+import { RootState } from "../app/store";
+import { clearUser } from "../features/user/model/userSlice";
 import { Box, Heading, Text, Button, VStack, HStack } from "@chakra-ui/react";
-import { logout } from "../../features/user/api/fetchUser";
+import { logout } from "../features/user/api/fetchUser";
 
 const Profile: React.FC = () => {
     const dispatch = useDispatch();
@@ -28,7 +27,8 @@ const Profile: React.FC = () => {
             boxShadow="lg"
             bg="white"
             margin={"auto"}
-            mt="40px"
+            position="relative"
+            top="80px"
         >
             <VStack spacing={4} align="start">
                 <Heading as="h2" size="lg" mb={4}>

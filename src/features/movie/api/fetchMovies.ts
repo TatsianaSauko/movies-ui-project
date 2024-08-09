@@ -18,9 +18,8 @@ export const fetchMoviesTop = createAsyncThunk("movies/fetchMoviesTop", async ()
     return response.data;
 });
 
-export const fetchSuggestions = async ({ count, value }: { count: number; value: string }) => {
-    const response = await fetch(`${BASE_URL}/movie?count=${count}&title=${value}`);
+export const fetchQuery = async ({ value }: { value: string }) => {
+    const response = await fetch(`${BASE_URL}?title=${value}`);
     const data = await response.json();
-    console.log(data);
     return data;
 };

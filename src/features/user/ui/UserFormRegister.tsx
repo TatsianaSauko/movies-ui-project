@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Box, Button, FormControl, FormLabel, Input, Text, Checkbox } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
 import { setEmail, setPassword, setName, setSurname } from "../model/userSlice";
 import { validatePassword } from "../../../utils/validation";
 import { registerUser } from "../../user/api/fetchUser";
