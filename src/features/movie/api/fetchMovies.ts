@@ -1,7 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-const BASE_URL = "https://cinemaguide.skillbox.cc/movie";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { BASE_URL, Endpoints } from "./constants";
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
     const response = await axios.get(`${BASE_URL}`);
@@ -9,12 +8,12 @@ export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
 });
 
 export const fetchRandomMovie = createAsyncThunk("movies/fetchRandomMovie", async () => {
-    const response = await axios.get(`${BASE_URL}/random`);
+    const response = await axios.get(`${BASE_URL}${Endpoints.Random}`);
     return response.data;
 });
 
 export const fetchMoviesTop = createAsyncThunk("movies/fetchMoviesTop", async () => {
-    const response = await axios.get(`${BASE_URL}/top10`);
+    const response = await axios.get(`${BASE_URL}${Endpoints.Top10}`);
     return response.data;
 });
 

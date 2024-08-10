@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "../../app/store";
+import { RootState } from "../../../app/store";
 import { Box, Text } from "@chakra-ui/react";
 import MovieInfo from "./MovieInfo";
 
@@ -14,11 +14,10 @@ const MovieDetails: React.FC = () => {
     return (
         <>
             <MovieInfo movie={selectedMovie} />;
-            <Text fontSize="4xl" as="b" color="white" pl="20px">
+            <Text fontSize="4xl" as="b" color="var(--color-primary)" pl="20px">
                 About movie
             </Text>
             <Box
-                maxW="1440px"
                 margin="auto"
                 display="flex"
                 flexDirection="column"

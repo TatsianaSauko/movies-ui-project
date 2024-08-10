@@ -1,8 +1,13 @@
 :root {
-    --color-dark: #242424;
     --color-primary: rgb(255 255 255 / 100%);
     --background-black: rgb(10 11 11 / 100%);
-    --card-shadow: rgb(255 255 255 / 33%);
+    --background-secondary: rgba(0, 0, 0, 0.5);
     --header-height: 56px;
     --footer-height: 40px;
+    --color-button-bg: rgba(106, 93, 194, 0.8);
+    --color-nav-hover: rgba(220, 93, 252, 1);
+    --color-button-hover-bg: rgba(106, 93, 194, 1);
+    --gradient-logo: linear-gradient(to right, rgba(106, 93, 194, 1), rgba(220, 93, 252, 1));
+    --container-max-width: 1440px;
+    --element-gap: 20px;
 }

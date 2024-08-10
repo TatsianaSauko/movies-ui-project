@@ -76,8 +76,8 @@ const UserFormLogin: React.FC = () => {
                 type="submit"
                 width="100%"
                 borderRadius="full"
-                bg="rgba(106, 93, 194, 1)"
-                _hover={{ bg: "rgba(106, 93, 194, 0.8)" }}
+                bg="var(--color-button-bg)"
+                _hover={{ bg: "var(--color-button-hover-bg)" }}
             >
                 Log In
             </Button>

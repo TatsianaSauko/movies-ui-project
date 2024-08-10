@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Button, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
-import { setEmail, setPassword, setName, setSurname } from "../model/userSlice";
+import { setEmail, setName, setPassword, setSurname } from "../model/userSlice";
 import { validatePassword } from "../../../utils/validation";
 import { registerUser } from "../../user/api/fetchUser";
 import { useNavigate } from "react-router-dom";
@@ -39,6 +39,7 @@ const UserFormRegister: React.FC = () => {
             navigate("/");
         } catch (error) {
             setErrorPassword("");
+            console.log(error);
             if (error instanceof Error) {
                 setError(error.message);
             } else {
@@ -95,8 +96,8 @@ const UserFormRegister: React.FC = () => {
                 type="submit"
                 width="100%"
                 borderRadius="full"
-                bg="rgba(106, 93, 194, 1)"
-                _hover={{ bg: "rgba(106, 93, 194, 0.8)" }}
+                bg="var(--color-button-bg)"
+                _hover={{ bg: "var(--color-button-hover-bg)" }}
             >
                 Create account
             </Button>

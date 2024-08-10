@@ -1,5 +1,5 @@
-import RandomMovie from "../features/ui/RandomMovie";
-import MovieList from "../features/ui/MovieList";
+import RandomMovie from "../features/movie/ui/RandomMovie";
+import MovieList from "../features/movie/ui/MovieList";
 import React from "react";
 
 const Home: React.FC = () => {

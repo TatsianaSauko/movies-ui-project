@@ -13,7 +13,7 @@ import {
     Spacer,
     useBreakpointValue,
 } from "@chakra-ui/react";
-import SearchBar from "../shared/SearchBar/SearchBar";
+import SearchBar from "../shared/ui/SearchBar";
 
 const Header: React.FC = () => {
     const name = useSelector((state: RootState) => state.user.name);
@@ -31,31 +31,31 @@ const Header: React.FC = () => {
             as="header"
             position="fixed"
             width="100%"
-            bg="rgba(0, 0, 0, 0.5)"
-            color="white"
+            bg="var(--background-secondary)"
+            color="var(--color-primary)"
             backdropFilter="blur(4px)"
             zIndex="2"
-            p="10px 20px"
+            p={{ base: "10px 10px", md: "10px 20px", lg: "10px 60px" }}
         >
             <Flex justify="space-between" align="center">
                 <HStack spacing={spacing}>
                     <Text
                         fontSize="2xl"
                         fontWeight="bold"
-                        bgGradient="linear(to-r, rgba(106, 93, 194, 1), rgba(220, 93, 252, 1))"
+                        bgGradient="var(--gradient-logo)"
                         backgroundClip="text"
                     >
                         Movies
                     </Text>
                     {!isSearchBarVisible && (
                         <HStack as="nav" spacing={spacing}>
-                            <Box as={Link} to="/" _hover={{ color: "rgba(106, 93, 194, 1)" }}>
+                            <Box as={Link} to="/" _hover={{ color: "var(--color-nav-hover)" }}>
                                 Home
                             </Box>
                             <Box
                                 as={Link}
                                 to="/popular"
-                                _hover={{ color: "rgba(106, 93, 194, 1)" }}
+                                _hover={{ color: "var(--color-nav-hover)" }}
                             >
                                 Popular
                             </Box>
@@ -72,8 +72,8 @@ const Header: React.FC = () => {
                             icon={<FaSearch size={20} />}
                             onClick={toggleSearchBar}
                             variant="ghost"
-                            color="white"
-                            _hover={{ color: "rgba(106, 93, 194, 1)" }}
+                            color="var(--color-primary)"
+                            _hover={{ color: "var(--color-nav-hover)" }}
                         />
                     )}
                     {isSearchBarVisible && !isLargerThan600 && <SearchBar />}
@@ -82,12 +82,12 @@ const Header: React.FC = () => {
                             <Box
                                 as={Link}
                                 to="/profile"
-                                _hover={{ color: "rgba(106, 93, 194, 1)" }}
+                                _hover={{ color: "var(--color-nav-hover)" }}
                             >
                                 <Text>{name}</Text>
                             </Box>
                         ) : (
-                            <Box as={Link} to="/login" _hover={{ color: "rgba(106, 93, 194, 1)" }}>
+                            <Box as={Link} to="/login" _hover={{ color: "var(--color-nav-hover)" }}>
                                 <FaSignInAlt size={20} />
                             </Box>
                         ))}

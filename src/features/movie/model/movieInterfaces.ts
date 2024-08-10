@@ -26,3 +26,19 @@ export interface Movie {
     production: string | null;
     awardsSummary: string | null;
 }
+
+export interface MovieDisplayProps {
+    movies: Movie[];
+    sliderValue: number;
+    setSliderValue: (value: number) => void;
+    handleMovieClick: (movie: Movie) => void;
+}
+
+export interface MovieCardProps {
+    movie: Movie;
+    onClick: () => void;
+}
+
+export interface MovieInfoProps {
+    movie: Movie;
+}

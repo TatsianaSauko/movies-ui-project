@@ -1,11 +1,6 @@
 import React from "react";
 import { Box, Card, Image, Text } from "@chakra-ui/react";
-import { Movie } from "../movie/model/movieTypes";
-
-interface MovieCardProps {
-    movie: Movie;
-    onClick: () => void;
-}
+import { MovieCardProps } from "../model/movieInterfaces";
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, onClick }) => (
     <Card
@@ -32,8 +27,8 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie, onClick }) => (
             left="0"
             width="100%"
             height="100%"
-            bg="rgba(0, 0, 0, 0.7)"
-            color="white"
+            bg="var(--background-secondary)"
+            color="var(--color-primary)"
             p="4"
             opacity="0"
             _hover={{ opacity: "1", transition: "0.3s" }}

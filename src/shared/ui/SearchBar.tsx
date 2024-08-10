@@ -37,7 +37,7 @@ const SearchBar: React.FC = () => {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                color="white"
+                color="var(--color-primary)"
                 bg="gray.600"
                 border="none"
                 _placeholder={{ color: "gray.400" }}

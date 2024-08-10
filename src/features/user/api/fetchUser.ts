@@ -1,19 +1,8 @@
-interface RegisterData {
-    email: string;
-    password: string;
-    name: string;
-    surname: string;
-}
-
-export interface LoginData {
-    email: string;
-    password: string;
-}
-
-const BASE_URL = "https://cinemaguide.skillbox.cc";
+import { LoginData, RegisterData } from "../model/userInterfaces";
+import { BASE_URL, Endpoints } from "./constants";
 
 export function registerUser({ email, name, surname, password }: RegisterData): Promise<void> {
-    return fetch(`${BASE_URL}/user`, {
+    return fetch(`${BASE_URL}${Endpoints.RegisterUser}`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -34,7 +23,7 @@ export function registerUser({ email, name, surname, password }: RegisterData): 
 }
 
 export function loginUser({ email, password }: LoginData): Promise<void> {
-    return fetch(`${BASE_URL}/auth/login`, {
+    return fetch(`${BASE_URL}${Endpoints.Login}`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -57,7 +46,7 @@ export function loginUser({ email, password }: LoginData): Promise<void> {
 }
 
 export function logout() {
-    return fetch(`${BASE_URL}/auth/logout`, {
+    return fetch(`${BASE_URL}${Endpoints.Logout}`, {
         method: "GET",
         credentials: "include",
     })
@@ -73,7 +62,7 @@ export function logout() {
 }
 
 export async function fetchMe() {
-    const response = await fetch(`${BASE_URL}/profile`, {
+    const response = await fetch(`${BASE_URL}${Endpoints.Profile}`, {
         method: "GET",
         credentials: "include",
     });

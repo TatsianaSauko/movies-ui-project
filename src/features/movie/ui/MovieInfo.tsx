@@ -1,10 +1,6 @@
 import React from "react";
 import { Box, Text, VStack, Button } from "@chakra-ui/react";
-import { Movie } from "../movie/model/movieTypes";
-
-interface MovieInfoProps {
-    movie: Movie;
-}
+import { MovieInfoProps } from "../model/movieInterfaces";
 
 const MovieInfo: React.FC<MovieInfoProps> = ({ movie }) => {
     return (
@@ -14,8 +10,8 @@ const MovieInfo: React.FC<MovieInfoProps> = ({ movie }) => {
                 flexDirection={{ base: "column", md: "row" }}
                 alignItems="center"
                 justifyContent="center"
-                gap="20px"
-                color="white"
+                gap="var(--element-gap)"
+                color="var(--color-primary)"
                 borderRadius="md"
                 boxShadow="lg"
                 mb="20px"
@@ -29,9 +25,10 @@ const MovieInfo: React.FC<MovieInfoProps> = ({ movie }) => {
                         as="a"
                         href={movie.trailerUrl}
                         variant="solid"
+                        color="var(--color-primary)"
                         size="md"
-                        bg="rgba(106, 93, 194, 1)"
-                        _hover={{ bg: "rgba(106, 93, 194, 0.8)" }}
+                        bg="var(--color-button-bg)"
+                        _hover={{ bg: "var(--color-button-hover-bg)" }}
                     >
                         Play
                     </Button>

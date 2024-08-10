@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { RootState, AppDispatch } from "../../app/store";
-import { fetchMovies } from "../movie/api/fetchMovies";
+import { RootState, AppDispatch } from "../../../app/store";
+import { fetchMovies } from "../api/fetchMovies";
 import MovieDisplay from "./MovieDisplay";
-import { Movie } from "../movie/model/movieTypes";
+import { Movie } from "../model/movieInterfaces";
 import { Box } from "@chakra-ui/react";
-import { setSelectedMovie } from "../movie/model/movieSlice";
-import LoadingSkeleton from "../../shared/LoadingSkeleton";
+import { setSelectedMovie } from "../model/movieSlice";
+import LoadingSkeleton from "../../../shared/ui/LoadingSkeleton";
 
 const MovieList: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();

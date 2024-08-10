@@ -55,8 +55,8 @@ const Profile: React.FC = () => {
                     onClick={handleLogout}
                     width="full"
                     borderRadius="full"
-                    bg="rgba(106, 93, 194, 1)"
-                    _hover={{ bg: "rgba(106, 93, 194, 0.8)" }}
+                    bg="var(--color-button-bg)"
+                    _hover={{ bg: "var(--color-button-hover-bg)" }}
                 >
                     Logout
                 </Button>

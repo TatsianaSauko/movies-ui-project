@@ -14,7 +14,7 @@ const Register: React.FC = () => {
             flexDirection="column"
             justifyContent="center"
             alignItems="center"
-            gap="20px"
+            gap="var(--element-gap)"
             position="relative"
             top="80px"
             borderRadius="15px"
@@ -23,7 +23,7 @@ const Register: React.FC = () => {
             <Text
                 fontSize="2xl"
                 fontWeight="bold"
-                bgGradient="linear(to-r, rgba(106, 93, 194, 1), rgba(220, 93, 252, 1))"
+                bgGradient="var(--gradient-logo)"
                 backgroundClip="text"
             >
                 Movies

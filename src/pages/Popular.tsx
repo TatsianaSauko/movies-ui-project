@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Box } from "@chakra-ui/react";
 import { setSelectedMovie } from "../features/movie/model/movieSlice";
-import LoadingSkeleton from "../shared/LoadingSkeleton";
+import LoadingSkeleton from "../shared/ui/LoadingSkeleton";
 import { fetchMoviesTop } from "../features/movie/api/fetchMovies";
-import { Movie } from "../features/movie/model/movieTypes";
+import { Movie } from "../features/movie/model/movieInterfaces";
 import { AppDispatch, RootState } from "@/app/store";
-import MovieDisplay from "../features/ui/MovieDisplay";
+import MovieDisplay from "../features/movie/ui/MovieDisplay";
 
 const Popular: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();

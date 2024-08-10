@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRandomMovie } from "../movie/api/fetchMovies";
-import { RootState, AppDispatch } from "../../app/store";
+import { fetchRandomMovie } from "../api/fetchMovies";
+import { RootState, AppDispatch } from "../../../app/store";
 import { Box } from "@chakra-ui/react";
 import MovieInfo from "./MovieInfo";
 
