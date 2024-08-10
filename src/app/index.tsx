@@ -11,7 +11,7 @@ const App: React.FC = () => {
     const email = useSelector((state: RootState) => state.user.email);
 
     useEffect(() => {
-        const handleBeforeUnload = async (event: BeforeUnloadEvent) => {
+        const handleBeforeUnload = async () => {
             if (email) {
                 try {
                     await logout();

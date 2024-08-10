@@ -1,8 +1,8 @@
 :root {
     --color-dark: #242424;
-    --color-primary: rgba(255, 255, 255, 1);
-    --background-black: rgba(10, 11, 11, 1);
-    --card-shadow: rgba(255, 255, 255, 0.33);
+    --color-primary: rgb(255 255 255 / 100%);
+    --background-black: rgb(10 11 11 / 100%);
+    --card-shadow: rgb(255 255 255 / 33%);
     --header-height: 56px;
     --footer-height: 40px;
 }

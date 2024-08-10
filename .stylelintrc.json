@@ -1,11 +1,6 @@
 {
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-scss"
-    ],
+    "extends": ["stylelint-config-standard", "stylelint-scss"],
     "rules": {
-      "block-no-empty": null,
-      "unit-whitelist": ["em", "rem", "%", "s"]
+        "block-no-empty": null
     }
-  }
-
+}

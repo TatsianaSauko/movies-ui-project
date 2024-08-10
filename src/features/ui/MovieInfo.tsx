@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text, VStack, Link, Button } from "@chakra-ui/react";
+import { Box, Text, VStack, Button } from "@chakra-ui/react";
 import { Movie } from "../movie/model/movieTypes";
 
 interface MovieInfoProps {
@@ -39,7 +39,7 @@ const MovieInfo: React.FC<MovieInfoProps> = ({ movie }) => {
                 <Box
                     bgImage={`url(${movie.posterUrl})`}
                     bgSize="cover"
-                    bgPosition="center"
+                    bgPosition="top"
                     borderRadius="md"
                     height={{ base: "400px", md: "600px" }}
                     width="100%"
