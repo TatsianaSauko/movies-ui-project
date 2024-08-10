@@ -1,3 +1,1 @@
-prettier --write $(git diff --cached --name-only --diff-filter=ACMR | grep -E '\.(js|jsx|ts|tsx|scss|css)$')
-git update-index --again
 npm run lint
