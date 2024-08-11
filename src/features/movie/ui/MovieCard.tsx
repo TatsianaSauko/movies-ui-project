@@ -1,10 +1,16 @@
 import React from "react";
 import { Box, Card, Image, Text } from "@chakra-ui/react";
-import { MovieCardProps } from "../model/movieInterfaces";
+import { Movie } from "../model/movieInterfaces";
+
+export interface MovieCardProps {
+    movie: Movie;
+    onClick: () => void;
+}
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie, onClick }) => (
     <Card
         onClick={onClick}
+        role="button"
         cursor="pointer"
         maxW="sm"
         borderWidth="1px"

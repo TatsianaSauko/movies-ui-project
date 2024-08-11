@@ -50,7 +50,7 @@ const movieSlice = createSlice({
             .addCase(fetchMovies.fulfilled, (state, action) => {
                 state.status = "succeeded";
                 state.movies = action.payload;
-                state.movieCount = action.payload;
+                state.movieCount = action.payload.length;
             })
             .addCase(fetchMovies.rejected, (state, action) => {
                 state.status = "failed";
